@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Results</title>
+    <!-- Add any additional styling or scripts here -->
+</head>
+<body>
+    <h1>Search Results</h1>
+    <p>Showing results for: {{ query }}</p>
+
+    {% for key, value in results.items %}
+        <h2>Results from {{ value.source }}</h2>
+        <ul>
+            {% for result in value.results %}
+                <li>
+                    <h3>Q. {{ result.0 }}</h3>
+                    <p>Ans. {{ result.1 }}</p>
+                    <p>Type: {{ result.2 }}</p> <!-- Display the type of interview question -->
+                </li>
+            {% endfor %}
+        </ul>
+    {% endfor %}
+</body>
+</html>
+
+
+
+
+
+
+<!-- <div class="container">-->
+
+<!--  <div class="right-section">-->
+<!--    &lt;!&ndash; content for the right section goes here &ndash;&gt;-->
+<!--      {% for quest in interview %}-->
+<!--     <h3>Q. {{ quest.question }}</h3>-->
+<!--     <p>Ans.{% if quest.img %} <img src="{{ quest.img.url }}"> {% endif %}{{ quest.answer|linebreaks }}</p>-->
+
+<!--      {% endfor %}-->
+<!--  </div>-->
+
+<!--</div>-->
+
+<!-- <div class="container">-->
+
+<!--  <div class="right-section">-->
+<!--    &lt;!&ndash; content for the right section goes here &ndash;&gt;-->
+<!--      {% for quest in questions %}-->
+<!--     <h3>Q. {{ quest.question }}</h3>-->
+<!--      <p>Ans.{{ quest.answer|linebreaks }}</p>-->
+<!--      {% endfor %}-->
+<!--  </div>-->
+
+<!-- <div class="right-section">-->
+<!--    &lt;!&ndash; content for the right section goes here &ndash;&gt;-->
+<!--      {% for quest in random %}-->
+<!--     <h3>Q. {{ quest.question }}</h3>-->
+<!--     <p>Ans.{% if quest.img %} <img src="{{ quest.img.url }}"> {% endif %}{{ quest.answer|linebreaks }}</p>-->
+
+<!--      {% endfor %}-->
+<!--  </div>-->
+<!--  <div class="right-section">-->
+<!--    &lt;!&ndash; content for the right section goes here &ndash;&gt;-->
+<!--      {% for mean in meaning %}-->
+<!--     <h3>Q. {{ mean.title }}</h3>-->
+<!--     <p>Ans.{% if mean.img %} <img src="{{ mean.img.url }}"> {% endif %}{{ mean.text|linebreaks }}</p>-->
+<!--     <h4>{% if mean.url %}  <a href="{{ mean.url }}" style="color: #993300">{{ mean.url }}</a>{% endif %}</h4>-->
+
+<!--      {% endfor %}-->
+<!--  </div>-->
+
+<!--  <div class="right-section">-->
+<!--    &lt;!&ndash; content for the right section goes here &ndash;&gt;-->
+<!--      {% for sql in sql_details %}-->
+<!--     <h3>Q. {{ sql.title }}</h3>-->
+<!--     <p>Ans.{% if sql.img %} <img src="{{ sql.img.url }}"> {% endif %}{{ sql.text|linebreaks }}</p>-->
+<!--     <h4>{% if sql.url %}  <a href="{{ sql.url }}" style="color: #993300">{{ sql.url }}</a>{% endif %}</h4>-->
+
+<!--      {% endfor %}-->
+<!--  </div>-->
+
+<!--</div>-->
+
+</body>
+</html>
