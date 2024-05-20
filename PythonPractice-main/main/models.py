@@ -1,6 +1,7 @@
 from django.contrib.auth.models import User
 from django.db import models
 
+
 # Create your models here.
 
 
@@ -44,6 +45,7 @@ class Questions(models.Model):
 class PythonMeaning(models.Model):
     title = models.CharField(max_length=255, blank=True)
     text = models.TextField()
+    code_block = models.TextField(blank=True, null=True)
     img = models.ImageField(upload_to="productImages", blank=True)
     url = models.URLField(max_length=200, blank=True, null=True)
     pdf = models.FileField(upload_to='pdfs', blank=True)
@@ -52,6 +54,7 @@ class PythonMeaning(models.Model):
 class PythonOtherImportantLibraries(models.Model):
     title = models.CharField(max_length=225, blank=True)
     text = models.TextField()
+    code_block = models.TextField(blank=True, null=True)
     img = models.ImageField(upload_to="productImages", blank=True)
     url = models.URLField(max_length=200, blank=True, null=True)
     pdf = models.FileField(upload_to='pdfs', blank=True)
@@ -63,6 +66,7 @@ class PythonOtherImportantLibraries(models.Model):
 class Testing(models.Model):
     title = models.CharField(max_length=225, blank=True)
     text = models.TextField()
+    code_block = models.TextField(blank=True, null=True)
     img = models.ImageField(upload_to="testingImages", blank=True)
     url = models.URLField(max_length=200, blank=True, null=True)
     pdf = models.FileField(upload_to='testing_pdfs', blank=True)
@@ -80,13 +84,18 @@ class InterviewQuestions(models.Model):
     question = models.TextField(max_length=255, blank=True)
     img = models.ImageField(upload_to="productImages", blank=True)
     img2 = models.ImageField(upload_to="productImages", blank=True)
-    answer = models.TextField(blank=True)
+    answer1 = models.TextField(blank=True)
+    code_block = models.TextField(blank=True, null=True)
+    answer2 = models.TextField(blank=True, null=True)
 
 
 class RandomQuestions(models.Model):
     question = models.TextField(max_length=255, blank=True)
-    img = models.ImageField(upload_to="productImages", blank=True)
     answer = models.TextField()
+    img = models.ImageField(upload_to="productImages", blank=True)
+    code_block = models.TextField(blank=True, null=True)
+    url = models.URLField(max_length=200, blank=True, null=True)
+    pdf = models.FileField(upload_to='testing_pdfs', blank=True)
 
 
 class SQLquestions(models.Model):
@@ -94,11 +103,13 @@ class SQLquestions(models.Model):
     question = models.TextField(max_length=255, blank=True)
     img = models.ImageField(upload_to="productImages", blank=True)
     answer = models.TextField(blank=True)
+    code_block = models.TextField(blank=True, null=True)
 
 
 class SQLdetails(models.Model):
     title = models.CharField(max_length=255, blank=True)
     text = models.TextField(blank=True)
+    code_block = models.TextField(blank=True, null=True)
     img = models.ImageField(upload_to="productImages", blank=True)
     img2 = models.ImageField(upload_to="productImages", blank=True)
     img3 = models.ImageField(upload_to="productImages", blank=True)
@@ -125,8 +136,45 @@ class Git(models.Model):
     text = models.TextField(blank=True)
     question = models.TextField(max_length=255, blank=True)
     answer = models.TextField(blank=True)
-    img = models.ImageField(upload_to="productImages/scrum", blank=True)
-    img2 = models.ImageField(upload_to="productImages/scrum", blank=True)
-    img3 = models.ImageField(upload_to="productImages/scrum", blank=True)
+    code_block = models.TextField(blank=True, null=True)
+    img = models.ImageField(upload_to="productImages/git", blank=True)
+    img2 = models.ImageField(upload_to="productImages/git", blank=True)
+    img3 = models.ImageField(upload_to="productImages/git", blank=True)
     url = models.URLField(max_length=200, blank=True, null=True)
     pdf = models.FileField(upload_to='pdfs/git', blank=True)
+
+
+class DjangoRestFramework(models.Model):
+    title = models.CharField(max_length=355, blank=True)
+    text = models.TextField(blank=True)
+    question = models.TextField(max_length=255, blank=True)
+    code_block = models.TextField(blank=True, null=True)
+    answer = models.TextField(blank=True)
+    img = models.ImageField(upload_to="productImages/DRF", blank=True)
+    img2 = models.ImageField(upload_to="productImages/DRF", blank=True)
+    img3 = models.ImageField(upload_to="productImages/DRF", blank=True)
+    url = models.URLField(max_length=200, blank=True, null=True)
+    pdf = models.FileField(upload_to='pdfs/DRF', blank=True)
+
+
+class DjangoRestFrameworkDetails(models.Model):
+    title = models.CharField(max_length=355, blank=True)
+    text = models.TextField(blank=True)
+    code_block = models.TextField(blank=True, null=True)
+    img = models.ImageField(upload_to="productImages/DRF", blank=True)
+    img2 = models.ImageField(upload_to="productImages/DRF", blank=True)
+    img3 = models.ImageField(upload_to="productImages/DRF", blank=True)
+    url = models.URLField(max_length=200, blank=True, null=True)
+    pdf = models.FileField(upload_to='pdfs/DRF', blank=True)
+
+
+class DjangoLibrary(models.Model):
+    title = models.CharField(max_length=355, blank=True)
+    text = models.TextField(blank=True)
+    question = models.TextField(max_length=255, blank=True)
+    answer = models.TextField(blank=True)
+    img = models.ImageField(upload_to="productImages/Django", blank=True)
+    img2 = models.ImageField(upload_to="productImages/Django", blank=True)
+    img3 = models.ImageField(upload_to="productImages/Django", blank=True)
+    url = models.URLField(max_length=200, blank=True, null=True)
+    pdf = models.FileField(upload_to='pdfs/Django', blank=True)

@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Django</title>
+    <style>
+.container {
+  display: flex;
+  width: 100%;
+  height: 100%;
+
+}
+
+.right-section {
+    font-size: 30px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 100px;
+    color: black;
+}
+
+</style>
+
+
+</head>
+<body>
+{% include 'main/nav.html' %}
+ <div class="container">
+
+  <div class="right-section">
+    <!-- content for the right section goes here -->
+     <h2 style="margin-bottom: 80px">Django-</h2>
+      {% for quest in meaning %}
+      <h3> {% if quest.title %} {{quest.title}} {% endif %}</h3>
+     <br><h3>{% if quest.question %} Q. {{ quest.question }} {% endif %}</h3>
+
+     <p> {% if quest.answer %} Ans.{{ quest.answer|linebreaks }} {% endif %}
+          {% if quest.text %} {{ quest.text|linebreaks }} {% endif %}
+         {% if quest.img %} <img src="{{ quest.img.url }}" style="width: 900px; height: 600px" alt=""> {% endif %}
+          {% if quest.img2 %} <img src="{{ quest.img2.url }}" style="width: 900px; height: 600px" alt=""> {% endif %}
+          {% if quest.img3 %} <img src="{{ quest.img3.url }}" style="width: 900px; height: 600px" alt=""> {% endif %}</p> <br>
+         <a {% if quest.pdf %} href="{{ quest.pdf.url }}" class="nav__link" style="color: #006b1b"> {{quest.pdf.name}} {% endif %}</a><br>
+         <a {% if quest.url %} href="{{ quest.url }}" >click here {% endif %}</a><br>
+      {% endfor %}
+  </div>
+
+</div>
+
+</body>
+</html>

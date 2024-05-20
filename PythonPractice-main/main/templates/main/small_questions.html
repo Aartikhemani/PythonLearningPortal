@@ -21,6 +21,12 @@
     padding-top: 100px;
     color: black;
 }
+.code-block {
+    background-color: black;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
 
 </style>
 
@@ -36,8 +42,9 @@
       {% for quest in questions %}
      <h3>Q. {{ quest.question }}</h3>
 
-     <p>Ans.{% if quest.img %} <img src="{{ quest.img.url }}" alt=""> {% endif %}{{ quest.answer|linebreaks }}</p>
-
+     <p>Ans.{% if quest.img %} <img src="{{ quest.img.url }}" alt=""> {% endif %}{{ quest.answer1|linebreaks }}</p>
+        {% if quest.code_block %} <div class="code-block" style="color: white; white-space: pre">{{quest.code_block |  linebreaksbr}} </div> {% endif %}
+      <p> {{ quest.answer2 }} </p>
       {% endfor %}
   </div>
 

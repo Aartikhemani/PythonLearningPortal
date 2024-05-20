@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>DRF</title>
+    <style>
+        .container {
+            display: flex;
+            width: 100%;
+            height: 100%;
+        }
+
+        .left-section {
+            width: 20%;
+            background-color: lightyellow;
+            padding-top: 30px;
+            margin-top: 100px;
+            margin-right: 10px;
+            font-size: 20px;
+            padding-left: 50px;
+        }
+
+        .right-section {
+            width: 80%;
+            font-size: 20px;
+            padding-left: 20px;
+            padding-right: 20px;
+            padding-top: 20px;
+            margin-top: 100px;
+        }
+
+        .code-block {
+            background-color: #f4f4f4;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+    </style>
+
+</head>
+<body>
+{% csrf_token %}
+{% include "main/nav.html" %}
+<div class="container">
+    <div class="left-section">
+        <!-- content for the left section goes here -->
+        {% for quest in queryset %}
+            <li class="nav__item"><a href="#{{ quest.pk }}" class="nav__link">{{ quest.title }}</a></li>
+        {% endfor %}
+    </div>
+    <div class="right-section">
+        <!-- content for the right section goes here -->
+        {% for quest in queryset %}
+            <section id="{{ quest.pk }}">
+                <h2 class="section-title">{{ quest.title }}</h2>
+                <p>{{ quest.text }}</p>
+                {% if quest.code_block %}
+                    <div class="code-block"><pre><code>{{ quest.code_block }}</code></pre></div>
+                {% endif %}
+
+            </section>
+        {% endfor %}
+    </div>
+
+</div>
+{# | truncatechars:500#}
+
+</body>
+</html>

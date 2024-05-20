@@ -8,6 +8,7 @@ from django.shortcuts import redirect, render
 
 from .helpers import send_forget_password_mail
 from .models import *
+from django.core.paginator import Paginator
 
 
 def SignUp(request):
@@ -176,7 +177,7 @@ def python_page(request):
 
 
 def python_meaning_view(request):
-    meaning = PythonMeaning.objects.all()
+    meaning = PythonMeaning.objects.filter(title__icontains='meaning')
     return render(request, 'main/Python_meaning.html', {"meaning": meaning})
 
 
@@ -215,6 +216,8 @@ def python_scraping(request):
     return render(request, 'main/python_scraping.html', {"meaning": meaning})
 
 
+# Django -----------------------------------------------------------
+
 # Testing -----------------------------------------------------------
 
 
@@ -223,23 +226,7 @@ def pytest(request):
     return render(request, 'main/pytest.html', {"meaning": meaning})
 
 
-def django_testing(request):
-    meaning = InterviewQuestions.objects.filter(interview_question_type__type__icontains="django testing")
-    return render(request, 'main/django_testing.html', {"meaning": meaning})
-
-
-def django_interview_questions(request):
-    meaning = InterviewQuestions.objects.filter(
-        interview_question_type__type__icontains="django interview questions")
-    return render(request, 'main/django_interview_questions.html', {"meaning": meaning})
-
-
 # ------------------------------------------------------------------
-
-
-def django_orm(request):
-    meaning = PythonMeaning.objects.filter(title__contains="ORM")
-    return render(request, 'main/django_orm.html', {"meaning": meaning})
 
 
 def interview_questions_view(request):
@@ -271,11 +258,6 @@ def random_questions_view(request):
 def small_sql_questions(request):
     questions = SQLquestions.objects.filter(interview_question_type__type__icontains="SQLQuestionss")
     return render(request, 'main/sql_small_questions.html', {"questions": questions})
-
-
-def rest_api_questions(request):
-    questions = InterviewQuestions.objects.filter(interview_question_type__type__icontains="Rest api")
-    return render(request, 'main/rest_api.html', {"questions": questions})
 
 
 def payment_gateway(request):
@@ -310,4 +292,4 @@ def scrum_detail(request, scrum_id=None):
 
 def git(request):
     questions = Git.objects.all()
-    return render(request, 'main/git.html', {"questions":questions})
+    return render(request, 'main/git.html', {"questions": questions})

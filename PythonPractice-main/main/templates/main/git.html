@@ -21,6 +21,12 @@
     padding-top: 100px;
     color: black;
 }
+.code-block {
+    background-color: #f4f4f4;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
 
 </style>
 
@@ -35,8 +41,10 @@
      <h2 style="margin-bottom: 80px">Git-</h2>
       {% for quest in questions %}
      <h3>Q. {{ quest.question }}</h3><br>
-
      <p>Ans.{% if quest.img %} <img src="{{ quest.img.url }}" alt=""> {% endif %}{{ quest.answer|linebreaks }}</p>
+     {% if quest.code_block %}
+         <div class="code-block"><pre><code>{{ quest.code_block }}</code></pre></div>
+     {% endif %}
      <a {% if quest.pdf %} href="{{ quest.pdf.url }}" class="nav__link" style="color: #006b1b"> click here {% endif %}</a><br>
      <a {% if quest.url %} href="{{ quest.url }}" >click here {% endif %}</a><br>
 

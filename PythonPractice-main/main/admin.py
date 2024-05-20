@@ -4,7 +4,6 @@ from .models import *
 
 admin.site.register(Questions)
 admin.site.register(Profile)
-admin.site.register(PythonMeaning)
 admin.site.register(SQLdetails)
 admin.site.register(InterviewQuestionType)
 admin.site.register(RandomQuestions)
@@ -12,10 +11,18 @@ admin.site.register(SQLquestions)
 admin.site.register(PythonOtherImportantLibraries)
 admin.site.register(Testing)
 admin.site.register(Scrum)
+
+
 # admin.site.register(Git)
 
 
 # Register your models here.
+
+@admin.register(PythonMeaning)
+class PythonMeaningAdmin(admin.ModelAdmin):
+    list_display = ["title"]
+
+
 @admin.register(Course)
 class CourseAdmin(admin.ModelAdmin):
     list_display = ["course_name"]
@@ -34,3 +41,20 @@ class InterviewQuestionAdmin(admin.ModelAdmin):
 @admin.register(Git)
 class GitAdmin(admin.ModelAdmin):
     list_display = ["question", "title"]
+
+
+@admin.register(DjangoRestFramework)
+class DjangoRestFrameworkAdmin(admin.ModelAdmin):
+    list_display = ["title", "question"]
+    list_display_links = ["title", "question"]
+
+
+@admin.register(DjangoRestFrameworkDetails)
+class DjangoRestFrameworkDetailsAdmin(admin.ModelAdmin):
+    list_display = ["title"]
+
+
+@admin.register(DjangoLibrary)
+class DjangoLibraryAdmin(admin.ModelAdmin):
+    list_display = ["title", "question"]
+    list_display_links = ["title", "question"]

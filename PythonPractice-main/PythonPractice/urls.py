@@ -1,7 +1,7 @@
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 from main import views
 from main.views import *
 
@@ -24,9 +24,9 @@ urlpatterns = [
                   # Testing -----------------------------------------------
 
                   path('pytest/', pytest, name='pytest'),
-                  path('django_testing/', django_testing, name='django_testing'),
-                  path('django_interview_questions/', django_interview_questions,
-                       name='django_interview_questions'),
+
+                  # Django ------------------------------------------------
+                  path('django_app/', include('django_app.urls')),
 
                   # python module and libraries--------------------------
                   path('python_modules_libraries/', python_modules_libraries, name='python_modules_libraries'),
@@ -35,7 +35,7 @@ urlpatterns = [
                   path('python_other_important_libraries/', python_other_important_libraries,
                        name='python_other_important_libraries'),
                   # -----------------------------------------------------
-                  path('django_orm/', django_orm, name='django_orm'),
+
                   path('interview_questions/', interview_questions_view, name="interview_questions"),
                   path('random_questions/', random_questions_view, name="random_questions"),
                   path('small_type_interview_questions/', small_type_interview_questions, name="small_questions"),
@@ -43,7 +43,7 @@ urlpatterns = [
                   path('python_programming_questions/', python_programming_questions,
                        name="python_programming_questions"),
                   path('small_sql_questions/', small_sql_questions, name="small_sql_questions"),
-                  path('rest_api_questions/', rest_api_questions, name="rest_api_questions"),
+
                   path('payment_gateway/', payment_gateway, name="payment_gateway"),
                   # random -----------------------------------------------
                   path('error_handling/', error_handling_view, name="error_handling"),
